@@ -23,7 +23,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="bg-black text-white h-screen flex flex-col justify-center py-6"
+      className="bg-black text-white min-h-screen flex flex-col justify-center py-6"
     >
       <div className="container mx-auto px-8 md:px-16 lg:px-24">
         {/* Animated Heading */}
@@ -44,14 +44,24 @@ const Skills = () => {
           Core technical areas reflecting both creative and development expertise.
         </p>
 
-        {/* Skill Cards (Scaled Like Project Cards) */}
+        {/* Skill Cards (Interactive on both desktop + mobile) */}
         <div className="flex justify-center flex-wrap gap-6 scale-[0.9] lg:scale-100 origin-top">
           {skills.map((skill, index) => (
             <motion.div
               key={index}
-              className="bg-gray-900/60 border border-gray-700 hover:border-green-400/60 rounded-xl p-4 w-72 md:w-80 flex-shrink-0 backdrop-blur-md cursor-default hover:shadow-[0_0_18px_rgba(34,197,94,0.5)] transition-all duration-300"
+              className="bg-gray-900/60 border border-gray-700 rounded-xl p-4 w-72 md:w-80 flex-shrink-0 backdrop-blur-md cursor-pointer transition-all duration-300"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{
+                scale: 1.05,
+                borderColor: "#22c55e",
+                boxShadow: "0 0 18px rgba(34,197,94,0.5)",
+              }}
+              whileTap={{
+                scale: 0.97,
+                borderColor: "#22c55e",
+                boxShadow: "0 0 15px rgba(34,197,94,0.5)",
+              }}
               viewport={{ once: false, amount: 0.3 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
             >
@@ -68,12 +78,24 @@ const Skills = () => {
               {/* Skill Tags */}
               <div className="flex flex-wrap justify-center gap-2">
                 {skill.skills.map((item, idx) => (
-                  <span
+                  <motion.span
                     key={idx}
-                    className="bg-gray-700/60 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-400 text-gray-200 hover:text-white px-3 py-1 rounded-full text-[11px] sm:text-xs transition-all duration-300"
+                    className="bg-gray-700/60 text-gray-200 px-3 py-1 rounded-full text-[11px] sm:text-xs transition-all duration-300"
+                    whileHover={{
+                      background:
+                        "linear-gradient(to right, rgb(59,130,246), rgb(34,197,94))",
+                      color: "#ffffff",
+                      scale: 1.1,
+                    }}
+                    whileTap={{
+                      background:
+                        "linear-gradient(to right, rgb(59,130,246), rgb(34,197,94))",
+                      color: "#ffffff",
+                      scale: 0.95,
+                    }}
                   >
                     {item}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
