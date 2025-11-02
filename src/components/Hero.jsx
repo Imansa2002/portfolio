@@ -15,6 +15,7 @@ const roles = ["UI/UX Designer", "Frontend Developer"];
 
 const Hero = () => {
   const [index, setIndex] = useState(0);
+
   useEffect(() => {
     const interval = setInterval(
       () => setIndex((prev) => (prev + 1) % roles.length),
@@ -30,6 +31,11 @@ const Hero = () => {
     hover: {
       scale: 1.2,
       rotate: 5,
+      transition: { type: "spring", stiffness: 300 },
+    },
+    tap: {
+      scale: 0.9,
+      rotate: -3,
       transition: { type: "spring", stiffness: 300 },
     },
   };
@@ -55,7 +61,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative bg-black text-white min-h-screen flex flex-col justify-center items-center overflow-hidden px-6 sm:px-8 md:px-16 lg:px-24"
+      className="relative bg-black text-white h-screen flex flex-col justify-center items-center overflow-hidden px-4 sm:px-8 md:px-16 lg:px-24"
       style={{
         backgroundImage: `url(${BackgroundImage})`,
         backgroundSize: "cover",
@@ -69,7 +75,8 @@ const Hero = () => {
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
 
-      <div className="relative z-10 text-center max-w-xl sm:max-w-2xl mx-auto px-2">
+      {/* Content */}
+      <div className="relative z-10 text-center max-w-xl sm:max-w-2xl mx-auto px-2 flex flex-col items-center justify-center">
         {/* Profile Image */}
         <motion.img
           ref={imageRef}
@@ -114,7 +121,7 @@ const Hero = () => {
           deliver both aesthetic appeal and meaningful user experiences.
         </p>
 
-        {/* Download CV */}
+        {/* Download CV Button */}
         <motion.a
           ref={cvRef}
           href="#"
@@ -134,6 +141,7 @@ const Hero = () => {
             href="mailto:imansagayathmi@gmail.com"
             variants={iconVariants}
             whileHover="hover"
+            whileTap="tap"
             className="text-blue-400 hover:text-white"
           >
             <FaEnvelope />
@@ -142,6 +150,7 @@ const Hero = () => {
             href="https://www.facebook.com/share/17o4mS9RmX/"
             variants={iconVariants}
             whileHover="hover"
+            whileTap="tap"
             className="text-blue-500 hover:text-white"
           >
             <FaFacebook />
@@ -150,6 +159,7 @@ const Hero = () => {
             href="https://www.instagram.com/___ima_n_sa___/"
             variants={iconVariants}
             whileHover="hover"
+            whileTap="tap"
             className="text-pink-500 hover:text-white"
           >
             <FaInstagram />
@@ -158,6 +168,7 @@ const Hero = () => {
             href="https://www.linkedin.com/in/imansa-gayathmi-575284303/"
             variants={iconVariants}
             whileHover="hover"
+            whileTap="tap"
             className="text-blue-400 hover:text-white"
           >
             <FaLinkedin />
@@ -166,6 +177,7 @@ const Hero = () => {
             href="https://github.com/Imansa2002"
             variants={iconVariants}
             whileHover="hover"
+            whileTap="tap"
             className="text-gray-400 hover:text-white"
           >
             <FaGithub />
