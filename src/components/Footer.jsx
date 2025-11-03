@@ -19,11 +19,11 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white py-8">
+    <footer className="bg-black text-white py-4">
       <div className="container mx-auto px-8 md:px-16 lg:px-24 text-center">
 
         {/* Animated Social Media Icons */}
-        <div className="flex justify-center space-x-8 my-6 text-3xl">
+        <div className="flex justify-center space-x-6 my-4 text-2xl">
           <motion.a
             href="mailto:imansagayathmi@gmail.com"
             variants={iconVariants}
@@ -71,7 +71,7 @@ const Footer = () => {
         </div>
 
         {/* Fixed Copyright Section */}
-        <div className="border-t border-gray-700 pt-4 mt-4">
+        <div className="border-t border-gray-700 pt-2 mt-2">
           <p className="text-gray-400 text-sm tracking-wide">
             &copy; {new Date().getFullYear()}{" "}
             <span className="text-blue-400 font-semibold">Imansa Gayathmi</span>

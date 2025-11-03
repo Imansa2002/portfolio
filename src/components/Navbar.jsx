@@ -19,22 +19,22 @@ const Navbar = () => {
   const generateHref = (item) => `#${item.toLowerCase().replace(/\s+/g, "-")}`;
 
   const handleNavClick = (item) => {
-    const target = document.querySelector(generateHref(item));
     setIsOpen(false);
 
     if (item === "Home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (target) {
-      // Dynamically calculate navbar height
-      const navbar = document.querySelector("nav");
-      const navbarHeight = navbar ? navbar.offsetHeight : 70;
-
-      // Optional extra padding to move section slightly down
-      const extraOffset = 20;
-
-      const topPos = target.offsetTop - navbarHeight + extraOffset;
-
-      window.scrollTo({ top: topPos, behavior: "smooth" });
+    } else if (item === "Contact") {
+      // Scroll to the bottom of the page
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    } else {
+      const target = document.querySelector(generateHref(item));
+      if (target) {
+        const navbar = document.querySelector("nav");
+        const navbarHeight = navbar ? navbar.offsetHeight : 70;
+        const extraOffset = 10;
+        const topPos = target.offsetTop - navbarHeight + extraOffset;
+        window.scrollTo({ top: topPos, behavior: "smooth" });
+      }
     }
   };
 
@@ -42,14 +42,13 @@ const Navbar = () => {
     const handleScroll = () => {
       const navbar = document.querySelector("nav");
       const navbarHeight = navbar ? navbar.offsetHeight : 70;
-      const extraOffset = 20;
+      const extraOffset = 10;
 
       [...menuItems, contactItem].forEach((item) => {
         const id = item.toLowerCase().replace(/\s+/g, "-");
         const section = document.getElementById(id);
         if (section) {
           const rect = section.getBoundingClientRect();
-          // Adjust active section detection with navbar + extraOffset
           if (rect.top <= navbarHeight + extraOffset && rect.bottom >= navbarHeight + extraOffset) {
             setActiveSection(item);
           }
