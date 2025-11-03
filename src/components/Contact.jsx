@@ -1,42 +1,12 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaEnvelope, FaPhone } from 'react-icons/fa';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
-import emailjs from 'emailjs-com';
 import Footer from './Footer';
 
 const Contact = () => {
   const { ref: headingRef, inView: headingInView } = useInView({ threshold: 0.2 });
-  const formRef = useRef();
-  const sectionRef = useRef();
-  const [successMessage, setSuccessMessage] = useState('');
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs.sendForm(
-      'service_tp9fyo5',
-      'template_abutfmi',
-      formRef.current,
-      'YOUR_PUBLIC_KEY'
-    )
-    .then((result) => {
-      console.log(result.text);
-      setSuccessMessage('Message sent successfully! ✅');
-      e.target.reset();
-    }, (error) => {
-      console.log(error.text);
-      setSuccessMessage('Failed to send message. ❌');
-    });
-  };
-
-  // Optional: smooth scroll if clicking navbar link with #contact
-  useEffect(() => {
-    if (window.location.hash === '#contact') {
-      sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }, []);
 
   return (
     <div className="flex flex-col min-h-screen bg-black text-white">
@@ -44,8 +14,7 @@ const Contact = () => {
       {/* Contact Section */}
       <section
         id="contact"
-        ref={sectionRef}
-        className="flex flex-col justify-center flex-1 px-4 sm:px-6 md:px-16 lg:px-24 py-6 sm:py-10"
+        className="flex-1 flex flex-col justify-center px-4 sm:px-6 md:px-16 lg:px-24 py-6 sm:py-10 overflow-hidden"
       >
         <motion.h2
           ref={headingRef}
@@ -60,7 +29,7 @@ const Contact = () => {
           </span>
         </motion.h2>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-10 flex-1">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-10">
           
           {/* Left: Contact Info */}
           <motion.div
@@ -96,8 +65,6 @@ const Contact = () => {
 
           {/* Right: Contact Form */}
           <motion.form
-            ref={formRef}
-            onSubmit={sendEmail}
             className="flex-1 max-w-xs sm:max-w-sm w-full space-y-2 sm:space-y-3"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -106,24 +73,18 @@ const Contact = () => {
           >
             <input
               type="text"
-              name="from_name"
               placeholder="Your Name"
               className="w-full p-2 sm:p-2.5 rounded bg-gray-800 border border-gray-600 text-[11px] sm:text-sm focus:outline-none focus:border-green-400"
-              required
             />
             <input
               type="email"
-              name="from_email"
               placeholder="Your Email"
               className="w-full p-2 sm:p-2.5 rounded bg-gray-800 border border-gray-600 text-[11px] sm:text-sm focus:outline-none focus:border-green-400"
-              required
             />
             <textarea
-              name="message"
               rows="4"
               placeholder="Your Message"
               className="w-full p-2 sm:p-2.5 rounded bg-gray-800 border border-gray-600 text-[11px] sm:text-sm focus:outline-none focus:border-green-400"
-              required
             />
             <button
               type="submit"
@@ -131,10 +92,6 @@ const Contact = () => {
             >
               Send Message
             </button>
-
-            {successMessage && (
-              <p className="text-center text-green-400 mt-2 text-sm">{successMessage}</p>
-            )}
           </motion.form>
         </div>
       </section>
