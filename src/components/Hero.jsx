@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HeroImage from "../assets/icon.png";
-import BackgroundImage from "../assets/background.jpg";
+import BackgroundVideo from "../assets/bg.mp4"; // Use your video here
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
@@ -61,16 +61,20 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative bg-black text-white min-h-[100dvh] flex flex-col justify-center items-center overflow-hidden px-4 sm:px-8 md:px-16 lg:px-24 scroll-mt-20"
-      style={{
-        backgroundImage: `url(${BackgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="relative text-white min-h-[100dvh] flex flex-col justify-center items-center overflow-hidden px-4 sm:px-8 md:px-16 lg:px-24 scroll-mt-20"
     >
-      {/* Background Overlay */}
+      {/* Video Background */}
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        src={BackgroundVideo}
+        autoPlay
+        loop
+        muted
+      />
+
+      {/* Overlay */}
       <motion.div
-        className="absolute inset-0 bg-black/50"
+        className="absolute inset-0 bg-black/50 z-0"
         animate={{ scale: [1, 1.03, 1] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
