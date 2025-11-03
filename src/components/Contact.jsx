@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaEnvelope, FaPhone } from 'react-icons/fa';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
+import emailjs from 'emailjs-com'; // <-- Import EmailJS
 import Footer from './Footer';
 
 const Contact = () => {
   const { ref: headingRef, inView: headingInView } = useInView({ threshold: 0.2 });
+  const formRef = useRef(); // <-- Reference to the form
+  const [successMessage, setSuccessMessage] = useState(''); // Feedback after sending
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      'service_tp9fyo5',   // Replace with your Service ID from EmailJS
+      'template_abutfmi',  // Replace with your Template ID from EmailJS
+      formRef.current,
+      'YOUR_PUBLIC_KEY'    // Replace with your Public Key from EmailJS
+    )
+    .then((result) => {
+      console.log(result.text);
+      setSuccessMessage('Message sent successfully! ✅');
+      e.target.reset(); // Clear the form
+    }, (error) => {
+      console.log(error.text);
+      setSuccessMessage('Failed to send message. ❌');
+    });
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-black text-white">
@@ -65,6 +87,8 @@ const Contact = () => {
 
           {/* Right: Contact Form */}
           <motion.form
+            ref={formRef} // <-- Connect ref to EmailJS
+            onSubmit={sendEmail} // <-- Send email on submit
             className="flex-1 max-w-xs sm:max-w-sm w-full space-y-2 sm:space-y-3"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -73,18 +97,24 @@ const Contact = () => {
           >
             <input
               type="text"
+              name="from_name" // <-- Important: match your EmailJS template variable
               placeholder="Your Name"
               className="w-full p-2 sm:p-2.5 rounded bg-gray-800 border border-gray-600 text-[11px] sm:text-sm focus:outline-none focus:border-green-400"
+              required
             />
             <input
               type="email"
+              name="from_email" // <-- Match EmailJS variable
               placeholder="Your Email"
               className="w-full p-2 sm:p-2.5 rounded bg-gray-800 border border-gray-600 text-[11px] sm:text-sm focus:outline-none focus:border-green-400"
+              required
             />
             <textarea
+              name="message" // <-- Match EmailJS variable
               rows="4"
               placeholder="Your Message"
               className="w-full p-2 sm:p-2.5 rounded bg-gray-800 border border-gray-600 text-[11px] sm:text-sm focus:outline-none focus:border-green-400"
+              required
             />
             <button
               type="submit"
@@ -92,6 +122,11 @@ const Contact = () => {
             >
               Send Message
             </button>
+
+            {/* Success or error message */}
+            {successMessage && (
+              <p className="text-center text-green-400 mt-2 text-sm">{successMessage}</p>
+            )}
           </motion.form>
         </div>
       </section>
