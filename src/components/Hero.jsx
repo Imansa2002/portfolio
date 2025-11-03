@@ -61,7 +61,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative bg-black text-white h-screen flex flex-col justify-center items-center overflow-hidden px-4 sm:px-8 md:px-16 lg:px-24"
+      className="relative bg-black text-white min-h-[100dvh] flex flex-col justify-center items-center overflow-hidden px-4 sm:px-8 md:px-16 lg:px-24 scroll-mt-20"
       style={{
         backgroundImage: `url(${BackgroundImage})`,
         backgroundSize: "cover",
