@@ -18,7 +18,7 @@ const Contact = () => {
         "service_tp9fyo5",
         "template_abutfmi",
         formRef.current,
-        "YOUR_PUBLIC_KEY" // replace with your actual public key
+        "KAAX44hOdUikiO1xb",
       )
       .then(
         () => {
