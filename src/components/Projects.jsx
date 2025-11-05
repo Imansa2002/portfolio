@@ -10,13 +10,15 @@ import LMSImage from "../assets/lib.PNG";
 import stylenest from "../assets/stylenest.PNG";
 import techfeed from "../assets/techfeed.PNG";
 import todo from "../assets/todo.PNG";
+import eatzy from "../assets/eatzy.PNG";
 
 const projects = [
-  { id: 1, name: "Library Management System", tech: "HTML / CSS / JS / PHP / MySQL", image: LMSImage, link: "https://github.com/Chamaracperera/LMS.git" },
-  { id: 2, name: "QR Attendance System", tech: "HTML / CSS / JS / PHP / MySQL", image: QRImage, link: "https://github.com/Chamaracperera/Attendance-Marking-System.git" },
-  { id: 3, name: "StyleNest – Clothing Store", tech: "Figma", image: stylenest, link: "https://www.figma.com/design/nrgSR8NZRtt6h4zDNQJZt1/Fashion-e-commerce-website" },
-  { id: 4, name: "Tech Feed – News App", tech: "Figma", image: techfeed, link: "https://www.figma.com/design/JDLHVG93mfrZSKtALFYF8q/Tech-Feed" },
-  { id: 5, name: "To-Do App", tech: "React.JS / CSS", image: todo, link: "https://github.com/Imansa2002/todo-app.git" },
+  { id: 1, name: "StyleNest – Clothing Store", tech: "Figma", image: stylenest, link: "https://www.figma.com/design/nrgSR8NZRtt6h4zDNQJZt1/Fashion-e-commerce-website" },
+  { id: 2, name: "Eatzy – Food Ordering Mobile App", tech: "Figma", image: eatzy, link: "https://www.figma.com/design/5YJVBRMbyoEIqcYXQm3CBh/Eatzy-Food-App?node-id=0-1&t=M1zXn4ExTTUmklWr-1" },
+  { id: 3, name: "Library Management System", tech: "HTML / CSS / JS / PHP / MySQL", image: LMSImage, link: "https://github.com/Chamaracperera/LMS.git" },
+  { id: 4, name: "QR Based Attendance Marking System", tech: "HTML / CSS / JS / PHP / MySQL", image: QRImage, link: "https://github.com/Chamaracperera/Attendance-Marking-System.git" },
+  { id: 5, name: "Tech Feed – Faculty News App", tech: "Figma", image: techfeed, link: "https://www.figma.com/design/JDLHVG93mfrZSKtALFYF8q/Tech-Feed" },
+  { id: 6, name: "To-Do App", tech: "React.JS / CSS", image: todo, link: "https://github.com/Imansa2002/todo-app.git" },
 ];
 
 const Projects = () => {
