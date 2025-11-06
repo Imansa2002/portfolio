@@ -9,9 +9,9 @@ const Navbar = () => {
   const menuItems = [
     "Home",
     "About Me",
-    "Skills",
     "Projects",
     "Certifications",
+    "Skills",
     "Education",
   ];
   const contactItem = "Contact";
