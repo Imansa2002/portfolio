@@ -128,7 +128,10 @@ const Hero = () => {
         {/* Download CV Button */}
         <motion.a
           ref={cvRef}
-          href="#"
+          href="/Imansa_CV.pdf"
+          download="Imansa_CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           initial={{ opacity: 0, y: 10 }}
           animate={cvInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: "easeOut" }}
