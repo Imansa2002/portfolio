@@ -11,14 +11,16 @@ import stylenest from "../assets/stylenest.PNG";
 import techfeed from "../assets/techfeed.PNG";
 import todo from "../assets/todo.PNG";
 import eatzy from "../assets/eatzy.PNG";
+import travelo from "../assets/Travelo.PNG";
 
 const projects = [
   { id: 1, name: "StyleNest – Clothing Store", tech: "Figma", image: stylenest, link: "https://www.figma.com/design/nrgSR8NZRtt6h4zDNQJZt1/Fashion-e-commerce-website" },
-  { id: 2, name: "Eatzy – Food Ordering Mobile App", tech: "Figma", image: eatzy, link: "https://www.figma.com/design/5YJVBRMbyoEIqcYXQm3CBh/Eatzy-Food-App?node-id=0-1&t=M1zXn4ExTTUmklWr-1" },
-  { id: 3, name: "Library Management System", tech: "HTML / CSS / JS / PHP / MySQL", image: LMSImage, link: "https://github.com/Chamaracperera/LMS.git" },
-  { id: 4, name: "QR Based Attendance Marking System", tech: "HTML / CSS / JS / PHP / MySQL", image: QRImage, link: "https://github.com/Chamaracperera/Attendance-Marking-System.git" },
-  { id: 5, name: "Tech Feed – Faculty News App", tech: "Figma", image: techfeed, link: "https://www.figma.com/design/JDLHVG93mfrZSKtALFYF8q/Tech-Feed" },
-  { id: 6, name: "To-Do App", tech: "React.JS / CSS", image: todo, link: "https://github.com/Imansa2002/todo-app.git" },
+  { id: 2, name: "Travelo – Travel Website", tech: "Figma", image: travelo, link: "https://www.figma.com/design/fbJZGHM4gK2GKiD6IWkspG/Travelo?node-id=0-1&t=vj8asxLhT1yHRN0j-1" },
+  { id: 3, name: "Eatzy – Food Ordering Mobile App", tech: "Figma", image: eatzy, link: "https://www.figma.com/design/5YJVBRMbyoEIqcYXQm3CBh/Eatzy-Food-App?node-id=0-1&t=M1zXn4ExTTUmklWr-1" },
+  { id: 4, name: "Library Management System", tech: "HTML / CSS / JS / PHP / MySQL", image: LMSImage, link: "https://github.com/Chamaracperera/LMS.git" },
+  { id: 5, name: "QR Based Attendance Marking System", tech: "HTML / CSS / JS / PHP / MySQL", image: QRImage, link: "https://github.com/Chamaracperera/Attendance-Marking-System.git" },
+  { id: 6, name: "Tech Feed – Faculty News App", tech: "Figma / Android Studio", image: techfeed, figma: "https://www.figma.com/design/JDLHVG93mfrZSKtALFYF8q/Tech-Feed",github: "https://github.com/Imansa2002/Newsapp.git"},
+  { id: 7, name: "To-Do App", tech: "React.JS / CSS", image: todo, link: "https://github.com/Imansa2002/todo-app.git" },
 ];
 
 const Projects = () => {
@@ -30,7 +32,7 @@ const Projects = () => {
 
   const totalCards = projects.length;
 
-  // ✅ Update cards per view based on screen size
+  // Update cards per view based on screen size
   useEffect(() => {
     const updateCardsPerView = () => {
       if (window.innerWidth < 640) {
@@ -46,7 +48,7 @@ const Projects = () => {
     return () => window.removeEventListener("resize", updateCardsPerView);
   }, []);
 
-  // ✅ Update card width dynamically
+  // Update card width dynamically
   useEffect(() => {
     const updateWidth = () => {
       if (cardRef.current) {
@@ -84,7 +86,7 @@ const Projects = () => {
           Practical projects showcasing development & design experience.
         </p>
 
-        {/* ✅ Carousel Section */}
+        {/* Carousel Section */}
         <div className="scale-[0.9] lg:scale-100 origin-top">
           <div className="overflow-hidden pr-10 sm:pr-16 lg:pr-24">
             <motion.div
@@ -104,7 +106,8 @@ const Projects = () => {
                   transition={{ delay: index * 0.2, duration: 0.6, ease: "easeOut" }}
                   viewport={{ once: false, amount: 0.3 }}
                 >
-                  <a href={project.link} target="_blank" className="block mb-3">
+                  {/* Image → Figma link if available */}
+                  <a href={project.figma || project.link} target="_blank" className="block mb-3">
                     <motion.img
                       src={project.image}
                       alt={project.name}
@@ -118,21 +121,50 @@ const Projects = () => {
                   </h3>
                   <p className="text-gray-400 text-xs mb-2">{project.tech}</p>
 
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    className="inline-flex items-center text-white hover:text-green-400 text-lg transition-all duration-300"
-                  >
-                    {project.tech.includes("Figma") ? <SiFigma /> : <FaGithub />}
-                    <FiArrowUpRight className="ml-1 text-xl" />
-                  </a>
+                  <div className="flex gap-4">
+                    {/* Figma Icon */}
+                    {project.figma && (
+                      <a
+                        href={project.figma}
+                        target="_blank"
+                        className="inline-flex items-center text-white hover:text-green-400 text-lg transition-all duration-300"
+                      >
+                        <SiFigma />
+                        <FiArrowUpRight className="ml-1 text-xl" />
+                      </a>
+                    )}
+
+                    {/* GitHub Icon */}
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        className="inline-flex items-center text-white hover:text-green-400 text-lg transition-all duration-300"
+                      >
+                        <FaGithub />
+                        <FiArrowUpRight className="ml-1 text-xl" />
+                      </a>
+                    )}
+
+                    {/* Fallback for single-link projects */}
+                    {!project.figma && !project.github && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        className="inline-flex items-center text-white hover:text-green-400 text-lg transition-all duration-300"
+                      >
+                        {project.tech.includes("Figma") ? <SiFigma /> : <FaGithub />}
+                        <FiArrowUpRight className="ml-1 text-xl" />
+                      </a>
+                    )}
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
           </div>
         </div>
 
-        {/* ✅ Navigation Arrows */}
+        {/* Navigation Arrows */}
         <button
           onClick={() => setCurrentIndex((prev) => Math.max(prev - 1, 0))}
           className={`absolute left-8 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center 

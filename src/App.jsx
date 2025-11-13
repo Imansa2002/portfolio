@@ -13,7 +13,6 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    // ✅ Prevent horizontal scroll globally
     <div className="w-full overflow-x-hidden">
       <Navbar />
       <main className="max-w-screen overflow-x-hidden">
