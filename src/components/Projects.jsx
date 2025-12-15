@@ -12,15 +12,17 @@ import techfeed from "../assets/techfeed.PNG";
 import todo from "../assets/todo.PNG";
 import eatzy from "../assets/eatzy.PNG";
 import travelo from "../assets/Travelo.PNG";
+import eventique from "../assets/eventique.png"
 
 const projects = [
   { id: 1, name: "StyleNest – Clothing Store", tech: "Figma", image: stylenest, link: "https://www.figma.com/design/nrgSR8NZRtt6h4zDNQJZt1/Fashion-e-commerce-website" },
-  { id: 2, name: "Travelo – Travel Website", tech: "Figma", image: travelo, link: "https://www.figma.com/design/fbJZGHM4gK2GKiD6IWkspG/Travelo?node-id=0-1&t=vj8asxLhT1yHRN0j-1" },
-  { id: 3, name: "Eatzy – Food Ordering Mobile App", tech: "Figma", image: eatzy, link: "https://www.figma.com/design/5YJVBRMbyoEIqcYXQm3CBh/Eatzy-Food-App?node-id=0-1&t=M1zXn4ExTTUmklWr-1" },
-  { id: 4, name: "Library Management System", tech: "HTML / CSS / JS / PHP / MySQL", image: LMSImage, link: "https://github.com/Chamaracperera/LMS.git" },
-  { id: 5, name: "QR Based Attendance Marking System", tech: "HTML / CSS / JS / PHP / MySQL", image: QRImage, link: "https://github.com/Chamaracperera/Attendance-Marking-System.git" },
-  { id: 6, name: "Tech Feed – Faculty News App", tech: "Figma / Android Studio", image: techfeed, figma: "https://www.figma.com/design/JDLHVG93mfrZSKtALFYF8q/Tech-Feed",github: "https://github.com/Imansa2002/Newsapp.git"},
-  { id: 7, name: "To-Do App", tech: "React.JS / CSS", image: todo, link: "https://github.com/Imansa2002/todo-app.git" },
+  { id: 2, name: "Eventique – Event Management and Planning Website", tech: "Figma", image: eventique, link: "https://www.figma.com/proto/tD7GmfIfzkpPsHoPAnIiS2/Eventique?page-id=0%3A1&node-id=32-104&p=f&viewport=-10%2C135%2C0.22&t=Uak9CQgtYvlE8Uvp-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=28%3A158" },
+  { id: 3, name: "Travelo – Travel Website", tech: "Figma", image: travelo, link: "https://www.figma.com/design/fbJZGHM4gK2GKiD6IWkspG/Travelo?node-id=0-1&t=vj8asxLhT1yHRN0j-1" },
+  { id: 4, name: "Eatzy – Food Ordering Mobile App", tech: "Figma", image: eatzy, link: "https://www.figma.com/design/5YJVBRMbyoEIqcYXQm3CBh/Eatzy-Food-App?node-id=0-1&t=M1zXn4ExTTUmklWr-1" },
+  { id: 5, name: "Library Management System", tech: "HTML / CSS / JS / PHP / MySQL", image: LMSImage, link: "https://github.com/Chamaracperera/LMS.git" },
+  { id: 6, name: "QR Based Attendance Marking System", tech: "HTML / CSS / JS / PHP / MySQL", image: QRImage, link: "https://github.com/Chamaracperera/Attendance-Marking-System.git" },
+  { id: 7, name: "Tech Feed – Faculty News App", tech: "Figma / Android Studio", image: techfeed, figma: "https://www.figma.com/design/JDLHVG93mfrZSKtALFYF8q/Tech-Feed",github: "https://github.com/Imansa2002/Newsapp.git"},
+  { id: 8, name: "To-Do App", tech: "React.JS / CSS", image: todo, link: "https://github.com/Imansa2002/todo-app.git" },
 ];
 
 const Projects = () => {
